@@ -1,0 +1,29 @@
+#!/usr/bin/env pybricks-micropython
+
+from pybricks import ev3brick as brick
+from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
+                                 InfraredSensor, UltrasonicSensor, GyroSensor)
+from pybricks.parameters import (Port, Stop, Direction, Button, Color,
+                                 SoundFile, ImageFile, Align)
+from pybricks.tools import print, wait, StopWatch
+from pybricks.robotics import DriveBase
+
+#kwargs
+# Write your program here
+kwarg = UltrasonicSensor(Port.S1)
+mototsa = Motor(Port.A)
+mototorb = Motor(Port.B)
+#i dont think these have any significance but it didnt work without them soooooooooooooo
+wheel_diameter = 56
+axle_track = 114
+robot = DriveBase (mototsa, mototorb, wheel_diameter, axle_track)
+while True:
+    if kwarg.distance() < 1000:
+        robot.drive_time(200,0,3000)
+        wait(3)
+        robot.drive_time(-200,0,3000)
+        wait(1000)
+        #mototsa.run_target(500,3600)
+        #mototorb.run_target(500,-3600)
+    else:
+        robot.stop()
