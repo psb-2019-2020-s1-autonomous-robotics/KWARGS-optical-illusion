@@ -1,0 +1,58 @@
+#!/usr/bin/env pybricks-micropython
+ 
+from pybricks import ev3brick as brick
+from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
+                                 InfraredSensor, UltrasonicSensor, GyroSensor)
+from pybricks.parameters import (Port, Stop, Direction, Button, Color,
+                                 SoundFile, ImageFile, Align)
+from pybricks.tools import print, wait, StopWatch
+from pybricks.robotics import DriveBase
+ 
+ 
+#kwargs
+#the variables that we gave the motors
+kwarg = UltrasonicSensor(Port.S1)
+mototsa = Motor(Port.A)
+mototorb = Motor(Port.B)
+#these are aspects of the motors that we need to define
+wheel_diameter = 56
+axle_track = 114
+robot = DriveBase (mototsa, mototorb, wheel_diameter, axle_track)
+ 
+#names of notes and frequencies that we want to play
+A = 440.0000
+CT = 523.2511
+F = 349.2282
+G = 391.9954
+B = 493.8833
+D = 293.6648
+DF = 587.3295
+BT = 246.9417
+AFF = 415.3047
+BF = 987.7666
+CO = 65.40639
+DT = 146.8324
+GT = 195.9977
+FT = 174.6141
+ 
+#array of all notes and durations of each notes that we need to play thriller
+def sing (Hz = [A, CT, A, F, A, 1, A, G, F, A, A, G, G, D, F, D, F, G, A, G, G, F, G, A, CT, A, DF, CT, 1, CT, B, A, A, A, G, G, F, F, D, F, G, 1, F, D, 1, AFF, F, 1, CT, B, CT, A, 1, G, F, CO, DT, FT, GT], d = [1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1]):
+    #sings the song entered
+    for f in range(0,len(Hz)):
+        if Hz[f] == 1:
+            wait(250*d[f])
+        else:
+            brick.sound.beep(Hz[f], 250*d[f])
+        wait(125)
+ 
+while True:
+    if kwarg.distance() < 1000:
+        #plays the song if it senses someone in front of it
+        sing()
+    else:
+        #if it doesn't sense anyone, it just turns the tori (the "donuts")
+        robot.drive_time(100,0,500)
+        wait(3)
+        robot.drive_time(-100,0,500)
+        wait(3)
+
