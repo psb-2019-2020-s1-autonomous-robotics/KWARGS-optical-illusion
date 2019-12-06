@@ -1,9 +1,9 @@
 #!/usr/bin/env pybricks-micropython
- """
+"""
 
- This is a Alice and Natalie's Optical Illusion Robot that also plays Thriller
+This is a Alice and Natalie's Optical Illusion Robot that also plays Thriller
 
- """
+"""
 from pybricks import ev3brick as brick
 from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
                                  InfraredSensor, UltrasonicSensor, GyroSensor)
@@ -40,6 +40,7 @@ GT = 195.9977
 FT = 174.6141
  
 #array of how to play thriller
+
 def sing (Hz = [A, CT, A, F, A, 1, A, G, F, A, A, G, G, D, F, D, F, G, A, G, G, F, G, A, CT, A, DF, CT, 1, CT, B, A, A, A, G, G, F, F, D, F, G, 1, F, D, 1, AFF, F, 1, CT, B, CT, A, 1, G, F, CO, DT, FT, GT], d = [1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1]):
     """This is a function that tells the robot what notes to play for how long"""
     for f in range(0,len(Hz)):
@@ -48,6 +49,8 @@ def sing (Hz = [A, CT, A, F, A, 1, A, G, F, A, A, G, G, D, F, D, F, G, A, G, G, 
         else:
             brick.sound.beep(Hz[f], 250*d[f])
         wait(125)
+        if kwarg.distance() >= 1000:
+            break
  
 while True:
     if kwarg.distance() < 1000:
