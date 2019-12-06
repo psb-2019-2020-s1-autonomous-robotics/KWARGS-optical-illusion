@@ -1,5 +1,9 @@
 #!/usr/bin/env pybricks-micropython
- 
+ """
+
+ This is a Alice and Natalie's Optical Illusion Robot that also plays Thriller
+
+ """
 from pybricks import ev3brick as brick
 from pybricks.ev3devices import (Motor, TouchSensor, ColorSensor,
                                  InfraredSensor, UltrasonicSensor, GyroSensor)
@@ -7,9 +11,9 @@ from pybricks.parameters import (Port, Stop, Direction, Button, Color,
                                  SoundFile, ImageFile, Align)
 from pybricks.tools import print, wait, StopWatch
 from pybricks.robotics import DriveBase
- 
- 
-#kwargs
+
+#team kwargs
+
 #the variables that we gave the motors
 kwarg = UltrasonicSensor(Port.S1)
 mototsa = Motor(Port.A)
@@ -35,9 +39,9 @@ DT = 146.8324
 GT = 195.9977
 FT = 174.6141
  
-#array of all notes and durations of each notes that we need to play thriller
+#array of how to play thriller
 def sing (Hz = [A, CT, A, F, A, 1, A, G, F, A, A, G, G, D, F, D, F, G, A, G, G, F, G, A, CT, A, DF, CT, 1, CT, B, A, A, A, G, G, F, F, D, F, G, 1, F, D, 1, AFF, F, 1, CT, B, CT, A, 1, G, F, CO, DT, FT, GT], d = [1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1]):
-    #sings the song entered
+    """This is a function that tells the robot what notes to play for how long"""
     for f in range(0,len(Hz)):
         if Hz[f] == 1:
             wait(250*d[f])
@@ -55,4 +59,3 @@ while True:
         wait(3)
         robot.drive_time(-100,0,500)
         wait(3)
-
