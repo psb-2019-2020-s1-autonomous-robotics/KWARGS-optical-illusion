@@ -1,7 +1,13 @@
 #!/usr/bin/env pybricks-micropython
 """
 
-This is a Alice and Natalie's Optical Illusion Robot that also plays Thriller
+KWARGS - the Optical Illusion
+
+Walk up to my red eyes and I will sense your presence.
+I will play Thriller by Michael Jackson and if you walk away I will spin.
+Be scared.
+
+By Natalie and Alice
 
 """
 from pybricks import ev3brick as brick
