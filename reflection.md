@@ -1,6 +1,7 @@
 # What We Learned
 - How to use our limited python knowledge to code a robot (ev3).
 - We learned how to work around our materials.
+- If our robot works for a long time, it starts making a whiny noise.
 
 # What Worked Well
 - Even though we struggled with it at first, we maganged to play Thriller fairly accurately. We were proud of ourselves.
